@@ -1,0 +1,42 @@
+{
+  "name": "verdaccio-provider",
+  "version": "0.1.2",
+  "description": "angular component library",
+  "main": "./dist/index.js",
+  "types": ["./dist/index.d.ts"],
+  "publishConfig": {
+    "registry": "http://localhost:32769/"
+  },
+  "scripts": {
+    "watch": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markusfalk/verdaccio-provider.git"
+  },
+  "author": "Markus Falk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markusfalk/verdaccio-provider/issues"
+  },
+  "homepage": "https://github.com/markusfalk/verdaccio-provider#readme",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@angular/forms": "^6.0.0",
+    "rxjs": "^6.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@angular/cli": "^6.0.8",
+    "@angular/common": "^6.0.9",
+    "@angular/core": "^6.0.9",
+    "@angular/forms": "^6.0.9",
+    "@angular/platform-browser": "^6.0.9",
+    "@types/node": "^10.5.2",
+    "rxjs": "^6.2.2",
+    "typescript": "^2.9.2",
+    "zone.js": "^0.8.26"
+  }
+}
