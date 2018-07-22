@@ -18,7 +18,8 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'developerName',
-        message: 'What is your name?'
+        message: 'What is your name?',
+        store: true
       },
       {
         type: 'input',
@@ -29,7 +30,8 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'npmRegistryUrl',
         message: 'What is the NPM Registry URL?',
-        default: 'http://registry.npmjs.org/'
+        default: 'http://registry.npmjs.org/',
+        store: true
       },
       {
         type: 'input',
@@ -40,7 +42,8 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'license',
         message: 'License?',
-        default: 'MIT'
+        default: 'MIT',
+        store: true
       }
     ];
 
