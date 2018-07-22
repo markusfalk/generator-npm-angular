@@ -1,5 +1,11 @@
 'use strict';
+
 const Generator = require('yeoman-generator');
+const _ = require('lodash');
+
+const hiddenConfigFiles = ['editorconfig', 'gitignore', 'npmignore'];
+
+const configFiles = ['tsconfig.json'];
 
 module.exports = class extends Generator {
   prompting() {
@@ -23,30 +29,100 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'npmRegistryUrl',
         message: 'What is the NPM Registry URL?',
-        default: 'registry.npmjs.org'
+        default: 'http://registry.npmjs.org/'
+      },
+      {
+        type: 'input',
+        name: 'repoUrl',
+        message: 'What is the repository URL?'
+      },
+      {
+        type: 'input',
+        name: 'license',
+        message: 'License?',
+        default: 'MIT'
       }
     ];
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
       this.props = props;
-      this.log(this.props);
+      this.props.moduleName = _.camelCase(this.props.moduleName);
+      this.props.moduleName = _.upperFirst(this.props.moduleName);
+      this.props.path = _.kebabCase(this.props.moduleName);
     });
   }
 
   writing() {
-    // This.fs.copy(
-    //   this.templatePath('dummyfile.txt'),
-    //   this.destinationPath('dummyfile.txt')
-    // );
+    // Static files
+    hiddenConfigFiles.forEach(file => {
+      this.fs.copy(
+        this.templatePath(`${file}.template`),
+        this.destinationPath(`.${file}`)
+      );
+    });
+
+    configFiles.forEach(file => {
+      this.fs.copy(
+        this.templatePath(`${file}.template`),
+        this.destinationPath(`${file}`)
+      );
+    });
+
+    // Dynamic templates
     this.fs.copyTpl(
-      this.templatePath('src/_index.ts'),
-      this.destinationPath('src/index.ts'),
-      { moduleName: this.props.moduleName }
+      this.templatePath('README.md.template'),
+      this.destinationPath('README.md'),
+      {
+        moduleName: this.props.moduleName,
+        description: this.props.description
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('./src/index.ts.template'),
+      this.destinationPath('./src/index.ts'),
+      {
+        moduleName: this.props.moduleName,
+        path: this.props.path
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('./src/foo-module/foo.module.ts.template'),
+      this.destinationPath(`./src/${this.props.path}/${this.props.path}.module.ts`),
+      {
+        moduleName: this.props.moduleName,
+        path: this.props.path
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('./src/foo-module/foo-components/foo.component.ts.template'),
+      this.destinationPath(
+        `./src/${this.props.path}/components/${this.props.path}.component.ts`
+      ),
+      {
+        moduleName: this.props.moduleName,
+        path: this.props.path
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('package.json.template'),
+      this.destinationPath(`package.json`),
+      {
+        moduleName: this.props.moduleName,
+        path: this.props.path,
+        description: this.props.description,
+        npmRegistryUrl: this.props.npmRegistryUrl,
+        repoUrl: this.props.repoUrl,
+        developerName: this.props.developerName,
+        license: this.props.license
+      }
     );
   }
 
   install() {
-    // This.installDependencies();
+    this.npmInstall();
   }
 };

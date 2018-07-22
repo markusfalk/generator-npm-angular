@@ -1,26 +1,27 @@
 {
-  "name": "verdaccio-provider",
-  "version": "0.1.2",
-  "description": "angular component library",
+  "name": "<%= path %>",
+  "version": "0.0.0",
+  "description": "<%= description %>",
   "main": "./dist/index.js",
   "types": ["./dist/index.d.ts"],
   "publishConfig": {
-    "registry": "http://localhost:32769/"
+    "registry": "<%= npmRegistryUrl %>"
   },
   "scripts": {
-    "watch": "tsc -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preversion": "rm -rf ./dist && tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markusfalk/verdaccio-provider.git"
+    "url": "<%= repoUrl %>"
   },
-  "author": "Markus Falk",
-  "license": "MIT",
+  "author": "<%= developerName %>",
+  "license": "<%= license %>",
   "bugs": {
-    "url": "https://github.com/markusfalk/verdaccio-provider/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/markusfalk/verdaccio-provider#readme",
+  "homepage": "",
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0",

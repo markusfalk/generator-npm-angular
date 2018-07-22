@@ -1,0 +1,9 @@
+# <%= moduleName %> Angular Module
+
+<%= description %>
+
+## Quick Start
+
+```javascript
+& npm run tsc -w
+```

@@ -1,1 +1,0 @@
-// export {<%= moduleName %>} from '';

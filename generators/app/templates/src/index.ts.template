@@ -1,0 +1,1 @@
+export { <%= moduleName %>Module } from './<%= path %>/<%= path %>.module';
