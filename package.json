@@ -1,6 +1,6 @@
 {
   "name": "generator-npm-angular",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A yeoman generator used to create angular packages for npm",
   "homepage": "https://github.com/markusfalk/generator-npm-angular",
   "author": {
