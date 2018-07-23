@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <p><%= moduleName %> works</p>
   `,
-  styles: ['p {color: green;}']
+  styles: [``]
 })
 export class <%= moduleName %>Component implements OnInit {
 

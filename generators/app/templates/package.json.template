@@ -9,6 +9,7 @@
   },
   "scripts": {
     "tsc": "tsc",
+    "ng": "ng",
     "test": "echo \"Error: no test specified\" && exit 1",
     "preversion": "rm -rf ./dist && tsc"
   },
@@ -23,21 +24,24 @@
   },
   "homepage": "",
   "peerDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@angular/forms": "^6.0.0",
-    "rxjs": "^6.0.0"
+    "@angular/common": "^6.0.9",
+    "@angular/compiler": "^6.0.9",
+    "@angular/core": "^6.0.9",
+    "@angular/forms": "^6.0.9",
+    "@angular/platform-browser-dynamic": "^6.0.9",
+    "@angular/platform-browser": "^6.0.9",
+    "rxjs": "^6"
   },
   "dependencies": {},
   "devDependencies": {
-    "@angular/cli": "^6.0.8",
     "@angular/common": "^6.0.9",
+    "@angular/compiler": "^6.0.9",
     "@angular/core": "^6.0.9",
     "@angular/forms": "^6.0.9",
+    "@angular/platform-browser-dynamic": "^6.0.9",
     "@angular/platform-browser": "^6.0.9",
     "@types/node": "^10.5.2",
     "rxjs": "^6.2.2",
-    "typescript": "^2.9.2",
-    "zone.js": "^0.8.26"
+    "typescript": "^2.9.2"
   }
 }
