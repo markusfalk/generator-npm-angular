@@ -2,6 +2,8 @@
 
 const Generator = require('yeoman-generator');
 const _ = require('lodash');
+var mkdir = require('mkdirp');
+var chalk = require('chalk');
 
 const hiddenConfigFiles = ['editorconfig', 'gitignore', 'npmignore'];
 
@@ -154,9 +156,30 @@ module.exports = class extends Generator {
         license: this.props.license
       }
     );
+
+    mkdir.sync('./angular');
   }
 
   install() {
-    this.npmInstall();
+    // This.npmInstall();
+  }
+
+  end() {
+    var successMessage = `Successfully created Angular Module ${this.props.moduleName}`;
+    this.log(chalk.green(successMessage));
+
+    var configMessage = `
+add this to your ./angular/tsconfig.json for easy imports
+
+"paths": {
+  "@${this.props.path}": [
+    "./../src/index.ts"
+  ]
+}
+    `;
+    this.log(configMessage);
+
+    var angularMessage = `Now run 'ng new angular --directory ./angular/' `;
+    this.log(chalk.inverse(angularMessage));
   }
 };
