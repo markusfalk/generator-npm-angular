@@ -1,13 +1,13 @@
-// import { VerdaccioProviderModule } from './verdaccio-provider.module';
+import { <%= moduleName %>Module } from './<%= path %>.module';
 
-// describe('VerdaccioProviderModule', () => {
-//   let verdaccioProviderModule: VerdaccioProviderModule;
+describe('<%= moduleName %>Module', () => {
+  let <%= moduleNameCamelCased %>Module: <%= moduleName %>Module;
 
-//   beforeEach(() => {
-//     verdaccioProviderModule = new VerdaccioProviderModule();
-//   });
+  beforeEach(() => {
+    <%= moduleNameCamelCased %>Module = new <%= moduleName %>Module();
+  });
 
-//   it('should create an instance', () => {
-//     expect(verdaccioProviderModule).toBeTruthy();
-//   });
-// });
+  it('should create an instance', () => {
+    expect(<%= moduleNameCamelCased %>Module).toBeTruthy();
+  });
+});
