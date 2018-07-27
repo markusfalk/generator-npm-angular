@@ -11,11 +11,26 @@ const configFiles = ['tsconfig.json'];
 
 module.exports = class extends Generator {
   prompting() {
-    const prompts = [
+    const questions = [
       {
         type: 'input',
         name: 'moduleName',
-        message: 'What is the modules name?'
+        message: `What is the module's name?`
+      },
+      {
+        type: 'confirm',
+        name: 'scope',
+        message: 'Do you want to publish your package under a scope?',
+        store: true
+      },
+      {
+        type: 'input',
+        name: 'scopeName',
+        message: `What is the module's scope?`,
+        store: true,
+        when: answers => {
+          return answers.scope;
+        }
       },
       {
         type: 'input',
@@ -49,8 +64,8 @@ module.exports = class extends Generator {
       }
     ];
 
-    return this.prompt(prompts).then(props => {
-      this.props = props;
+    return this.prompt(questions).then(answers => {
+      this.props = answers;
       this.props.moduleNameCamelCased = _.camelCase(this.props.moduleName);
       this.props.moduleName = this.props.moduleNameCamelCased;
       this.props.moduleName = _.upperFirst(this.props.moduleName);
@@ -153,7 +168,9 @@ module.exports = class extends Generator {
         npmRegistryUrl: this.props.npmRegistryUrl,
         repoUrl: this.props.repoUrl,
         developerName: this.props.developerName,
-        license: this.props.license
+        license: this.props.license,
+        scope: this.props.scope,
+        scopeName: this.props.scopeName
       }
     );
 

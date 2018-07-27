@@ -1,5 +1,9 @@
 {
+  <% if(scope){ %>
+  "name": "@<%= scopeName %>/<%= path %>",
+  <% } else { %>
   "name": "<%= path %>",
+  <% } %>
   "version": "0.0.0",
   "description": "<%= description %>",
   "main": "./dist/index.js",
@@ -10,7 +14,7 @@
   "scripts": {
     "tsc": "tsc",
     "ng": "ng",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"run 'npm run ng test' in .\/angular\/\" && exit 1",
     "preversion": "rm -rf ./dist && tsc"
   },
   "repository": {
@@ -44,6 +48,5 @@
     "rxjs": "^6.2.2",
     "typescript": "^2.9.2",
     "zone.js": "^0.8.26"
-
   }
 }
