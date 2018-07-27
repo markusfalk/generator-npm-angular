@@ -1,10 +1,37 @@
-# npm-generator
+# npm-angular
 
-A yeoman generator used to create angular packages for npm
+## What is npm-angular
 
-## Prerequisits
+### Summary 
 
-* Angular ^6
+> A generator used to scaffold Angular modules as npm packages.
+
+### tl;dr
+
+This generator can be used to create npm packages that contain Angular modules, services, components and so on. 
+
+#### Project structure
+
+```
+|- src
+    |- index.ts
+    |- module-name
+        |- module-name.module.ts
+        |- components
+        |- services
+        |- directives
+        |- ...
+|- angular
+...
+```
+
+##### ./src
+
+Contains what will be published with the package. 
+
+##### ./angular
+
+Contains an Angular project that imports your package module so that you can develop and test it in the Angular environment.
 
 ## Quick Start
 
@@ -65,7 +92,7 @@ contextExternal.keys().map(contextExternal); // new
 
 Add the external folder to the angular setup
 
-```javascript
+```json
 "include": [
   "../../src/**/*.spec.ts", //  new
   "**/*.spec.ts",
@@ -76,10 +103,13 @@ Add the external folder to the angular setup
 
 You can also add the external module to the path of the angular project to resolve short and readable imports
 
-```javascript
+```json
 "paths": {
   "@your-module-name": [
     "./../src/index.ts"
   ]
 }
 ```
+## What else
+
+Made in :de:
