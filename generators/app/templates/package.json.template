@@ -14,7 +14,7 @@
   "scripts": {
     "tsc": "tsc",
     "ng": "ng",
-    "test": "echo \"run 'npm run ng test' in .\/angular\/\" && exit 1",
+    "test": "echo \"run 'ng test' in .\/angular\/\" && exit 1",
     "preversion": "rimraf ./dist && tsc"
   },
   "repository": {
