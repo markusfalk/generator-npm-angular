@@ -6,12 +6,13 @@
 
 ### Features
 
-* Quickly create npm packages that contain Angular modules
-* Publish with or without scope
-* Use official or your own registry
-* Clean project structure 
-* Seperated Angular development environment 
-* Uses strictest typescript setup possible
+* :package: Quickly create npm packages that contain Angular modules
+* :gem: Publish with or without scope
+* :postbox: Use official or your own registry
+* :open_file_folder: Clean project structure 
+* :broken_heart: Seperated Angular development environment 
+* :no_entry: Uses strictest typescript setup possible
+* :de: Made in Germany
 
 ### tl;dr
 
@@ -21,7 +22,31 @@ It is a biased set of conventions and configurations that you should bend to you
 
 It seperates and includes your module from an Angular CLI installation so that you can develop and test your module in the target environment before publishing.
 
-#### Project structure
+## Quick Start
+
+### Setup a new npm angular project
+
+```bash
+npm i -g npm-angular
+yo npm-angular
+cd ./angular
+ng new your-angular --skip-git --directory ./angular/
+```
+### Start package
+
+```bash
+cd ./angular
+ng serve
+ng test
+```
+
+### Start Angular
+
+```bash
+tsc -w
+```
+
+## Project structure
 
 ```
 |- src
@@ -36,23 +61,15 @@ It seperates and includes your module from an Angular CLI installation so that y
 ...
 ```
 
-##### ./src
+### ./src
 
 Contains what will be published with the package. 
 
 In here you are free to create any structure of angular components as you wish. Initially it contains the packages main file `index.ts` and one module folder. 
 
-##### ./angular
+### ./angular
 
 Contains an Angular project that imports your package module so that you can develop and test it in the Angular environment.
-
-## Quick Start
-
-```javascript
-npm i -g npm-angular
-yo npm-angular
-npm run tsc -w
-```
 
 ## Styles and Templates in Components
 
@@ -156,6 +173,4 @@ You can also add the external module to the path of the Angular project to resol
   "@angular/*": ["./node_modules/@angular/*"]  // only use local angular 
 }
 ```
-## What else
 
-Made in :de:
