@@ -47,55 +47,6 @@ ng serve
 ng test
 ```
 
-## Project structure
-
-```
-|- src
-    |- index.ts
-    |- module-name
-        |- module-name.module.ts
-        |- components
-        |- services
-        |- directives
-        |- ...
-|- angular
-...
-```
-
-### ./src
-
-Contains what will be published with the package. 
-
-In here you are free to create any structure of angular components as you wish. Initially it contains the packages main file `index.ts` and one module folder. 
-
-### ./angular
-
-Contains an Angular project that imports your package module so that you can develop and test it in the Angular environment.
-
-## Styles and Templates in Components
-
-When creating a new component, note that npm-angular will not publish or compile `SCSS/CSS` or `HTML`. 
-
-You need to add styles and templates *inline*. 
-
-```javascript
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'your-componente',
-  template: `
-    <p>YourComponent works</p>
-  `,
-  styles: [`
-    p { color: paleturquoise };
-  `]
-})
-export class YourComponent implements OnInit {
-  constructor() { }
-  ngOnInit() { }
-}
-```
-
 ## Mandatory Angular configuration
 
 ### ./angular/tsconfig.json
@@ -170,4 +121,53 @@ Add npm-angular's folder to the Angular testing setup.
   "**/*.spec.ts",
   "**/*.d.ts"
 ]
+```
+
+## Project structure
+
+```
+|- src
+    |- index.ts
+    |- module-name
+        |- module-name.module.ts
+        |- components
+        |- services
+        |- directives
+        |- ...
+|- angular
+...
+```
+
+### ./src
+
+Contains what will be published with the package. 
+
+In here you are free to create any structure of angular components as you wish. Initially it contains the packages main file `index.ts` and one module folder. 
+
+### ./angular
+
+Contains an Angular project that imports your package module so that you can develop and test it in the Angular environment.
+
+## Styles and Templates in Components
+
+When creating a new component, note that npm-angular will not publish or compile `SCSS/CSS` or `HTML`. 
+
+You need to add styles and templates *inline*. 
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'your-componente',
+  template: `
+    <p>YourComponent works</p>
+  `,
+  styles: [`
+    p { color: paleturquoise };
+  `]
+})
+export class YourComponent implements OnInit {
+  constructor() { }
+  ngOnInit() { }
+}
 ```
