@@ -25,9 +25,10 @@ It seperates and includes your module to an Angular CLI installation so that you
 ### Setup a new npm angular project
 
 ```bash
-npm i -g npm-angular // install npm-angular
-yo npm-angular // start npm-angular
-ng new your-angular --skip-git --directory ./angular/ // add angular
+npm install -g yo # install yeoman if you have not already
+npm i -g npm-angular # install npm-angular
+yo npm-angular # start npm-angular
+ng new your-angular --skip-git --directory ./angular/ # add angular
 ```
 
 See Mandatory Angular Setup after successful installation.
