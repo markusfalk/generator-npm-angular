@@ -24,9 +24,6 @@
     "noFallthroughCasesInSwitch": true,
 
     "baseUrl": "./",
-    // "paths": {
-    //   "@angular/*": ["./angular/node_modules/@angular/*"] // do not install angular twice, use angular form ./angular
-    // },
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
     "esModuleInterop": true,
