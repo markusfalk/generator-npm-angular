@@ -25,7 +25,7 @@ It seperates and includes your module to an Angular CLI installation so that you
 ### Setup a new npm angular project
 
 ```bash
-npm install -g yo # install yeoman if you have not already
+npm i -g yo # install yeoman if you have not already
 npm i -g npm-angular # install npm-angular
 yo npm-angular # start npm-angular
 ng new your-angular --skip-git --directory ./angular/ # add angular
@@ -100,10 +100,10 @@ export class YourComponent implements OnInit {
 
 ### ./angular/tsconfig.json
 
-```json
+```jsonc
 "paths": {
   "@your-module-name": ["./../src/index.ts"], // convenience setup for angular project
-  "@angular/*": ["./node_modules/@angular/*"]  // only use local angular 
+  "@angular/*": ["./node_modules/@angular/*"]  // only use local angular to avoid circular dependecy
 }
 ```
 
@@ -160,11 +160,11 @@ context.keys().map(context);
 contextNpmAngular.keys().map(contextNpmAngular); // new
 ```
 
-#### ./angular/tsconfig.spec.json in angular project
+#### ./angular/tsconfig.spec.json
 
-Add npm-angular's folder to the Angular testing setup in `tsconfig.spec.json`.
+Add npm-angular's folder to the Angular testing setup.
 
-```json
+```jsonc
 "include": [
   "../../src/**/*.spec.ts", //  new - ng test your module in ./angular
   "**/*.spec.ts",
