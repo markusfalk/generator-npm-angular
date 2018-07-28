@@ -2,8 +2,6 @@
 
 ## What is npm-angular
 
-### Summary 
-
 > A generator used to scaffold Angular modules as npm packages.
 
 ### tl;dr
@@ -43,7 +41,13 @@ npm run tsc -w
 
 ## Testing
 
+To not have to setup and maintain another test environment npm-angular uses Angular's existing setup in `./angular/`
+
+To make this work tests created for your npm package need some extra setup. 
+
 ## *.spec.ts in external module
+
+Reset and initialize Angular's test environment with every new `TestBed`.
 
 ```javascript
 import { TestBed, async } from '@angular/core/testing';
@@ -76,21 +80,21 @@ describe('TestedComponent', () => {
 
 ### test.ts in angular project
 
-after angular setup you need to add a new context for the external specs.
+After installing Angular in `./angular/` you need to add an additional context to Angular's `test.ts`.
 
 ```javascript
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
-const contextExternal = require.context('./../../src/', true, /\.spec\.ts$/) // new;
+const contextNpmAngular = require.context('./../../src/', true, /\.spec\.ts$/) // new;
 
 // And load the modules.
 context.keys().map(context);
-contextExternal.keys().map(contextExternal); // new
+contextNpmAngular.keys().map(contextNpmAngular); // new
 ```
 
 ### tsconfig.spec.json in angular project
 
-Add the external folder to the angular setup
+Add npm-angular's folder to the Angular testing setup in `tsconfig.spec.json`.
 
 ```json
 "include": [
@@ -101,7 +105,7 @@ Add the external folder to the angular setup
 ```
 ## Convenience setup
 
-You can also add the external module to the path of the angular project to resolve short and readable imports
+You can also add the external module to the path of the Angular project to resolve short and readable imports.
 
 ```json
 "paths": {
