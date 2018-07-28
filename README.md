@@ -141,20 +141,19 @@ Add npm-angular's folder to the Angular testing setup in `tsconfig.spec.json`.
 
 ```json
 "include": [
-  "../../src/**/*.spec.ts", //  new
+  "../../src/**/*.spec.ts", //  new - ng test your module in ./angular
   "**/*.spec.ts",
   "**/*.d.ts"
 ]
 ```
-## Convenience setup
+## Additonal Angular Setup
 
 You can also add the external module to the path of the Angular project to resolve short and readable imports.
 
 ```json
 "paths": {
-  "@your-module-name": [
-    "./../src/index.ts"
-  ]
+  "@your-module-name": ["./../src/index.ts"], // convenience setup for angular project
+  "@angular/*": ["./node_modules/@angular/*"]  // only use local angular 
 }
 ```
 ## What else

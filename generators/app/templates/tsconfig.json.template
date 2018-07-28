@@ -24,11 +24,19 @@
     "noFallthroughCasesInSwitch": true,
 
     "baseUrl": "./",
+    // "paths": {
+    //   "@angular/*": ["./angular/node_modules/@angular/*"] // do not install angular twice, use angular form ./angular
+    // },
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
     "esModuleInterop": true,
 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "exclude": [
+    "./dist",
+    "**/*.spec.ts", // they do not compile without angular setup
+    "./angular" // rootDir should have all ts files
+  ]
 }
