@@ -14,7 +14,7 @@
   "scripts": {
     "tsc": "tsc",
     "ng": "ng",
-    "test": "echo \"run 'npm run ng test' in .\/angular\/\" && exit 1",
+    "test": "echo \"run 'ng test' in .\/angular\/\" && exit 1",
     "preversion": "rimraf ./dist && tsc"
   },
   "repository": {
@@ -28,26 +28,26 @@
   },
   "homepage": "",
   "peerDependencies": {
-    "@angular/common": "^6.0.9",
-    "@angular/compiler": "^6.0.9",
-    "@angular/core": "^6.0.9",
-    "@angular/forms": "^6.0.9",
-    "@angular/platform-browser-dynamic": "^6.0.9",
-    "@angular/platform-browser": "^6.0.9",
+    "@angular/common": "^6",
+    "@angular/compiler": "^6",
+    "@angular/core": "^6",
+    "@angular/forms": "^6",
+    "@angular/platform-browser-dynamic": "^6",
+    "@angular/platform-browser": "^6",
     "rxjs": "^6"
   },
   "dependencies": {},
   "devDependencies": {
-    "@angular/common": "^6.0.9",
-    "@angular/compiler": "^6.0.9",
-    "@angular/core": "^6.0.9",
-    "@angular/forms": "^6.0.9",
-    "@angular/platform-browser-dynamic": "^6.0.9",
-    "@angular/platform-browser": "^6.0.9",
-    "@types/node": "^10.5.2",
+    "@angular/common": "^6",
+    "@angular/compiler": "^6",
+    "@angular/core": "^6",
+    "@angular/forms": "^6",
+    "@angular/platform-browser-dynamic": "^6",
+    "@angular/platform-browser": "^6",
+    "@types/node": "^10.5",
     "rimraf": "^2.6.2",
     "rxjs": "^6.2.2",
-    "typescript": "^2.9.2",
+    "typescript": "^2.9",
     "zone.js": "^0.8.26"
   }
 }

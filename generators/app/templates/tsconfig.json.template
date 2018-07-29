@@ -30,5 +30,10 @@
 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "exclude": [
+    "./dist",
+    "**/*.spec.ts", // they do not compile without angular setup
+    "./angular" // rootDir should have all ts files
+  ]
 }

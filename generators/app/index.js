@@ -178,7 +178,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    // This.npmInstall();
+    this.npmInstall();
   }
 
   end() {
@@ -189,14 +189,14 @@ module.exports = class extends Generator {
 add this to your ./angular/tsconfig.json for easy imports
 
 "paths": {
-  "@${this.props.path}": [
-    "./../src/index.ts"
-  ]
+  "@${this.props.path}": ["./../src/index.ts"], // convenience setup for angular project
+  "@angular/*": ["./node_modules/@angular/*"]  // only use local angular to avoid circular dependecy
 }
+
     `;
     this.log(configMessage);
 
-    var angularMessage = `Now run 'ng new angular --directory ./angular/' `;
+    var angularMessage = `ng new angular --skip-git --directory ./angular/`;
     this.log(chalk.inverse(angularMessage));
   }
 };

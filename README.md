@@ -1,17 +1,16 @@
 # npm-angular
 
-## What is npm-angular
-
 > A generator used to scaffold Angular modules to be published to npm.
 
-### Features
+## Features
 
-* Quickly create npm packages that contain Angular modules
-* Publish with or without scope
-* Use official or your own registry
-* Clean project structure 
-* Seperated Angular development environment 
-* Uses strictest typescript setup possible
+* :package: Quickly create npm packages that contain Angular modules
+* :gem: Publish with or without scope
+* :postbox: Use official or your own registry
+* :open_file_folder: Clean project structure 
+* :broken_heart: Seperated Angular development environment 
+* :no_entry: Uses strictest typescript setup possible
+* :de: Made in Germany
 
 ### tl;dr
 
@@ -19,76 +18,53 @@ This generator can be used to create npm packages that contain Angular modules, 
 
 It is a biased set of conventions and configurations that you should bend to your needs.
 
-It seperates and includes your module from an Angular CLI installation so that you can develop and test your module in the target environment before publishing.
-
-#### Project structure
-
-```
-|- src
-    |- index.ts
-    |- module-name
-        |- module-name.module.ts
-        |- components
-        |- services
-        |- directives
-        |- ...
-|- angular
-...
-```
-
-##### ./src
-
-Contains what will be published with the package. 
-
-In here you are free to create any structure of angular components as you wish. Initially it contains the packages main file `index.ts` and one module folder. 
-
-##### ./angular
-
-Contains an Angular project that imports your package module so that you can develop and test it in the Angular environment.
+It seperates and includes your module to an Angular CLI installation so that you can develop and test your module in the target environment before publishing.
 
 ## Quick Start
 
-```javascript
-npm i -g npm-angular
-yo npm-angular
-npm run tsc -w
+### Setup a new npm angular project
+
+```bash
+npm i -g yo # install yeoman if you have not already
+npm i -g npm-angular # install npm-angular
+yo npm-angular # start npm-angular
+ng new your-angular --skip-git --directory ./angular/ # add angular
 ```
 
-## Styles and Templates in Components
+See Mandatory Angular Setup after successful installation.
 
-When creating a new component, note that npm-angular will not publish or compile `SCSS/CSS` or `HTML`. 
+### Start package development
 
-You need to add styles and templates *inline*. 
+```bash
+tsc -w
+```
 
-```javascript
-import { Component, OnInit } from '@angular/core';
+### Start Angular with your integrated module
 
-@Component({
-  selector: 'your-module',
-  template: `
-    <p>YourModule works</p>
-  `,
-  styles: [`
-    p { color: paleturquoise }
-  `]
-})
-export class AsdfComponent implements OnInit {
+```bash
+cd ./angular
+ng serve
+ng test
+```
 
-  constructor() { }
+## Mandatory Angular configuration
 
-  ngOnInit() {
-  }
+### ./angular/tsconfig.json
 
+```jsonc
+"paths": {
+  "@your-module-name": ["./../src/index.ts"], // convenience setup for angular project
+  "@angular/*": ["./node_modules/@angular/*"]  // only use local angular to avoid circular dependecy
 }
 ```
 
-## Testing
+### Tests
 
 To not have to setup and maintain another seperate test environment npm-angular uses Angular's existing setup in `./angular/`
 
 To make this work tests created for your npm package need some extra setup. 
 
-## *.spec.ts in your module
+#### ./src/*.spec.ts
 
 Reset and initialize Angular's test environment with every new `TestBed`.
 
@@ -121,7 +97,7 @@ describe('TestedComponent', () => {
 });
 ```
 
-### test.ts in angular project
+#### ./angular/test.ts
 
 After installing Angular in `./angular/` you need to add an additional context to Angular's `test.ts`.
 
@@ -135,28 +111,63 @@ context.keys().map(context);
 contextNpmAngular.keys().map(contextNpmAngular); // new
 ```
 
-### tsconfig.spec.json in angular project
+#### ./angular/tsconfig.spec.json
 
-Add npm-angular's folder to the Angular testing setup in `tsconfig.spec.json`.
+Add npm-angular's folder to the Angular testing setup.
 
-```json
+```jsonc
 "include": [
-  "../../src/**/*.spec.ts", //  new
+  "../../src/**/*.spec.ts", //  new - ng test your module in ./angular
   "**/*.spec.ts",
   "**/*.d.ts"
 ]
 ```
-## Convenience setup
 
-You can also add the external module to the path of the Angular project to resolve short and readable imports.
+## Project structure
 
-```json
-"paths": {
-  "@your-module-name": [
-    "./../src/index.ts"
-  ]
+```
+|- src
+    |- index.ts
+    |- module-name
+        |- module-name.module.ts
+        |- components
+        |- services
+        |- directives
+        |- ...
+|- angular
+...
+```
+
+### ./src
+
+Contains what will be published with the package. 
+
+In here you are free to create any structure of angular components as you wish. Initially it contains the packages main file `index.ts` and one module folder. 
+
+### ./angular
+
+Contains an Angular project that imports your package module so that you can develop and test it in the Angular environment.
+
+## Styles and Templates in Components
+
+When creating a new component, note that npm-angular will not publish or compile `SCSS/CSS` or `HTML`. 
+
+You need to add styles and templates *inline*. 
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'your-componente',
+  template: `
+    <p>YourComponent works</p>
+  `,
+  styles: [`
+    p { color: paleturquoise };
+  `]
+})
+export class YourComponent implements OnInit {
+  constructor() { }
+  ngOnInit() { }
 }
 ```
-## What else
-
-Made in :de:
