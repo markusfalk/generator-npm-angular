@@ -21,7 +21,7 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'scope',
-        message: 'Do you want to publish your package under a scope?',
+        message: 'Do you want to publish your package with a scope?',
         store: true
       },
       {
@@ -47,11 +47,20 @@ module.exports = class extends Generator {
       },
 
       {
+        type: 'confirm',
+        name: 'noneDefaultRegistry',
+        message: 'Do you want to publish your package to your own registry?',
+        store: true
+      },
+      {
         type: 'input',
         name: 'npmRegistryUrl',
-        message: 'What is the NPM Registry URL?',
+        message: 'What is your npm registry URL?',
         default: 'http://registry.npmjs.org/',
-        store: true
+        store: true,
+        when: answers => {
+          return answers.noneDefaultRegistry;
+        }
       },
 
       {
@@ -169,13 +178,14 @@ module.exports = class extends Generator {
       this.templatePath('package.json.template'),
       this.destinationPath(`package.json`),
       {
-        moduleName: this.props.moduleName,
-        path: this.props.path,
         description: this.props.description,
-        npmRegistryUrl: this.props.npmRegistryUrl,
-        repoUrl: this.props.repoUrl,
         developerName: this.props.developerName,
         license: this.props.license,
+        moduleName: this.props.moduleName,
+        noneDefaultRegistry: this.props.noneDefaultRegistry,
+        npmRegistryUrl: this.props.npmRegistryUrl,
+        path: this.props.path,
+        repoUrl: this.props.repoUrl,
         scope: this.props.scope,
         scopeName: this.props.scopeName
       }
