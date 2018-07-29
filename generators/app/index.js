@@ -17,6 +17,7 @@ module.exports = class extends Generator {
         name: 'moduleName',
         message: `What is the module's name?`
       },
+
       {
         type: 'confirm',
         name: 'scope',
@@ -32,6 +33,7 @@ module.exports = class extends Generator {
           return answers.scope;
         }
       },
+
       {
         type: 'input',
         name: 'developerName',
@@ -43,6 +45,7 @@ module.exports = class extends Generator {
         name: 'description',
         message: 'Description?'
       },
+
       {
         type: 'input',
         name: 'npmRegistryUrl',
@@ -50,6 +53,7 @@ module.exports = class extends Generator {
         default: 'http://registry.npmjs.org/',
         store: true
       },
+
       {
         type: 'input',
         name: 'repoUrl',
@@ -70,6 +74,7 @@ module.exports = class extends Generator {
       this.props.moduleName = this.props.moduleNameCamelCased;
       this.props.moduleName = _.upperFirst(this.props.moduleName);
       this.props.path = _.kebabCase(this.props.moduleName);
+      this.props.scopeName = _.kebabCase(this.props.scopeName);
     });
   }
 
@@ -138,7 +143,9 @@ module.exports = class extends Generator {
       ),
       {
         moduleName: this.props.moduleName,
-        path: this.props.path
+        path: this.props.path,
+        scope: this.props.scope,
+        scopeName: this.props.scopeName
       }
     );
 
@@ -186,7 +193,7 @@ module.exports = class extends Generator {
     this.log(chalk.green(successMessage));
 
     var configMessage = `
-add this to your ./angular/tsconfig.json for easy imports
+add this to your ./angular/tsconfig.json:
 
 "paths": {
   "@${this.props.path}": ["./../src/index.ts"], // convenience setup for angular project
