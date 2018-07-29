@@ -1,0 +1,16 @@
+# <%= moduleName %> Angular Module
+
+<%= description %>
+
+## Development
+
+```bash
+tsc -w # start module compiler in ./src
+ng serve # start angular in ./angular
+```
+
+## Tests
+
+```bash
+ng test # test as usual in ./angular
+```

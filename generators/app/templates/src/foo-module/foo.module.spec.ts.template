@@ -1,0 +1,13 @@
+import { <%= moduleName %>Module } from './<%= path %>.module';
+
+describe('<%= moduleName %>Module', () => {
+  let <%= moduleNameCamelCased %>Module: <%= moduleName %>Module;
+
+  beforeEach(() => {
+    <%= moduleNameCamelCased %>Module = new <%= moduleName %>Module();
+  });
+
+  it('should create an instance', () => {
+    expect(<%= moduleNameCamelCased %>Module).toBeTruthy();
+  });
+});

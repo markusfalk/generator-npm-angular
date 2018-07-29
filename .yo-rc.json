@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Markus Falk",
+      "authorEmail": "mail@markus-falk.com",
+      "authorUrl": "www.markus-falk.com"
+    }
+  }
+}
