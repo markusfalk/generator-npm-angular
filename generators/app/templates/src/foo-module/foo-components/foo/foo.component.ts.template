@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dser-<%= path %>',
+  <% if(scope){ %>
+  selector: '<%= scopeName %>-<%= path %>',
+  <% } else { %>
+  selector: 'app-<%= path %>',
+  <% } %>
   template: `
     <p><%= moduleName %> works</p>
   `,
